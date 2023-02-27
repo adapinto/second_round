@@ -1,5 +1,4 @@
 import pymongo
-#from classes.DbMongo import DbMongo
 from classes import DATA, Dataprocess
 
 class Students:

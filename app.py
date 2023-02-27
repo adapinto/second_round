@@ -1,6 +1,6 @@
 import pymongo
 from pymongo import MongoClient
-from classes import DATA, Dataprocess
+from classes import DATA, Dataprocess,Students
 
 def main():
     user = 'Adimari'
@@ -20,8 +20,7 @@ def main():
     client = pymongo.MongoClient(uri)
     db = client['courses-careers-students']
     collection = db['students']
-    
-    
+
     collection.insert_many(DATA)
     
     pipeline = Dataprocess(DATA)
@@ -29,7 +28,7 @@ def main():
     pipeline.create_careers()
     pipeline.create_students()
     pipeline.create_enrollments()
-
+    
     return True
 
 if __name__ == "__main__":

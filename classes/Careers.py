@@ -1,4 +1,3 @@
-#from classes.DbMongo import DbMongo
 
 class Careers:
     
