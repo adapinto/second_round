@@ -20,7 +20,11 @@ def main():
     client = pymongo.MongoClient(uri)
     db = client['courses-careers-students']
     collection = db['students']
+    
+    #Elina todo lo que hay en la db para que no dupliquen los documentos
+    delete_all = collection.delete_many({})
 
+    #Añadir la data a la coleccion de estudiantes
     collection.insert_many(DATA)
     
     pipeline = Dataprocess(DATA)
