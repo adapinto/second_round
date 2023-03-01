@@ -1,6 +1,5 @@
-import pymongo
-from pymongo import MongoClient
-from classes import DATA, Dataprocess,Students,DbMongo
+
+from classes import DATA, Dataprocess,DbMongo
 from dotenv import load_dotenv
 
 def main():
@@ -21,24 +20,29 @@ def main():
 #
    #client = pymongo.MongoClient(uri)
    #db = client['courses-careers-students']
-    collection = db['students']
+   
+   
+    #collection = db['students']
+
    
    # #Elina todo lo que hay en la db para que no dupliquen los documentos
-    delete_all = collection.delete_many({})
+    #delete_all = collection.delete_many({})
 #
    # #Añadir la data a la coleccion de estudiantes
-   # collection.insert_many(DATA)
+    #collection.insert_many(DATA)
     
     pipeline = Dataprocess(DATA)
     
     pipeline.create_students(db)
-    pipeline.create_careers()
-    pipeline.create_enrollments()
+    pipeline.create_careers(db)
+    pipeline.create_enrollments(db)
+    
+    client.close()
 
+    return True
     
 
-    client.close()
-        
-    if __name__ == "__main__":
-        load_dotenv()
-        main()
+if __name__ == "__main__":
+   load_dotenv()
+   main() 
+   
